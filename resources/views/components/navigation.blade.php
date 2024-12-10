@@ -3,7 +3,7 @@
             <img class="w-auto h-16" src="{{ asset('images/company_log_new.png') }}" alt="logo Viva La Pizzeria">
 		</a>
 		<ul class="flex justify-around gap-4">
-			<a class="flex items-center p-2 transition-colors hover:bg-Italy_dark_red" href="/Menu"><li><p class="text-xl font-bold text-white ">Menu</p></li></a>
+			<a class="flex items-center p-2 transition-colors hover:bg-Italy_dark_red" href="/menu"><li><p class="text-xl font-bold text-white ">Menu</p></li></a>
 			<a class="flex items-center p-2 transition-colors hover:bg-Italy_dark_red" href="/bestellening"><li><p class="text-xl font-bold text-white">Bestellen</p></li></a>
             @if(!auth()->check())
                 <a class="flex items-center p-2 transition-colors hover:bg-Italy_dark_red" href="/login"><li><p class="text-xl font-bold text-white">Login</p></li></a> 
