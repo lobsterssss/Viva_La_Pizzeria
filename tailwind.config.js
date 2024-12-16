@@ -23,7 +23,11 @@ export default {
               boxShadow: {
                 'default': '1px 4px 8px 4px rgba(0, 0, 0, 0.25)',
                 'inner': 'inset 1px 2px 4px 1px rgba(0, 0, 0, 0.25)',
+              },
+              width: {
+                'grow': '-webkit-fill-available',
               }
+        
         },
     },
     plugins: [],

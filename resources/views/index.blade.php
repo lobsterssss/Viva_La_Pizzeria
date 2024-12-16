@@ -2,9 +2,12 @@
     @section('content')
 
     <img src="" alt="">
+    <div>
+        <img src="" alt="">
+        <img src="" alt="">
+    </div>
 
-    <img src="" alt="">
-    <img src="" alt="">
     @endsection
+
 
 </x-head>

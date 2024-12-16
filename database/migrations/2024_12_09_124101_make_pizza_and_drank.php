@@ -16,22 +16,22 @@ return new class extends Migration
             $table->string('Naam');
             $table->string('Omschrijving');
             $table->double('Prijs');
-            $table->string('FotoUri');        
+            $table->string('FotoUri')->default('Generic_pizza');        
         });
-        Schema::create('Drank', function (Blueprint $table) {
+        Schema::create('Dranks', function (Blueprint $table) {
             $table->id('DrankID');
             $table->string('Naam');
             $table->string('Omschrijving');
             $table->double('Prijs');
-            $table->string('FotoUri');        
+            $table->string('FotoUri')->default('Generic_pizza');        
         });
-        Schema::create('Pizza_ingredient', function (Blueprint $table) {
+        Schema::create('Pizza_ingredients', function (Blueprint $table) {
             $table->id('ID');
             $table->foreignId('IngredientID');
             $table->foreignId('PizzaID');
         });
 
-        Schema::create('Ingredient', function (Blueprint $table) {
+        Schema::create('Ingredients', function (Blueprint $table) {
             $table->id('IngredientID');
             $table->string('Naam');
             $table->integer('Voorraad');

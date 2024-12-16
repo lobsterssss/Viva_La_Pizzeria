@@ -1,9 +1,11 @@
 <?php
 
 namespace App\Http\Controllers;
-use App\Models\Pizza;
-use App\Models\Drank;
+
+use App\Models\Product;
 use Illuminate\Http\Request;
+
+use function Pest\Laravel\get;
 
 class ProductController extends Controller
 {
@@ -11,9 +13,9 @@ class ProductController extends Controller
 
     public function index() 
     {
-        $products['pizzas'] = Pizza::all();
-        $products['drinks'] = Drank::all();
-        return view("index", $products);
+        $products = Product::all_products();
+        
+        return view("Product.Menu")->with('products', $products);
     }
 
     public function show() 
@@ -21,13 +23,10 @@ class ProductController extends Controller
 
     }
 
-    public function register() 
+    public function all_products()
     {
+        $products = Product::all_products();
 
-    }
-
-    public function logout() 
-    {
-
+        return response()->json($products);
     }
 }

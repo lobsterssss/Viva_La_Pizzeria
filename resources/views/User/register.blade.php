@@ -10,19 +10,19 @@
                 ['type' => 'password', 'name' => 're-password', 'label' => 're-Password', 'required' => true, 'value' => old('re-password'), 'error' => '', 'placeholder' => 'vul hier nog een keer uw wachtwoord in'],
             ];
         @endphp
-
-        <form class="p-4 rounded-lg shadow-default" action="{{ route('register') }}" method="POST">
-            @csrf
-            <h2 class="text-lg font-bold">Register</h2>
-            @foreach ($formFields as $field)
-            <x-form_input :error="$field['error']" :type="$field['type']" :name="$field['name']" :label="$field['label']" :placeholder="$field['placeholder']" :required="$field['required']" />
-            @endforeach
-            <div class="flex justify-between items-center gap-8">
-                <a class="btn btn-primary " href="{{ route('login') }}">al een acount log dan in</a>
-                <button type="submit" class="btn btn-primary bg-Italy_green p-2 rounded-lg text-white">Registeer</button>
-            </div>
-        </form>
-
+        <div class="w-grow flex justify-center items-center">
+            <form class="p-4 rounded-lg shadow-default" action="{{ route('register') }}" method="POST">
+                @csrf
+                <h2 class="text-lg font-bold">Register</h2>
+                @foreach ($formFields as $field)
+                <x-form_input :error="$field['error']" :type="$field['type']" :name="$field['name']" :value="$field['value']" :label="$field['label']" :placeholder="$field['placeholder']" :required="$field['required']" />
+                @endforeach
+                <div class="flex justify-between items-center gap-8">
+                    <a class="btn btn-primary " href="{{ route('login') }}">al een acount log dan in</a>
+                    <button type="submit" class="btn btn-primary bg-Italy_green p-2 rounded-lg text-white">Registeer</button>
+                </div>
+            </form>
+        </div>
     @endsection
 </x-head>
 
