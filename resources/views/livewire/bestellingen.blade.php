@@ -10,7 +10,7 @@ $formFields = [
         <h1 class="text-xl font-bold">uw bestelling</h1>
         @if($Products)
             @foreach($Products as $Product)
-                <livewire:bestelde-pizza :Product="$Product" :ProductID="key($Product)" />
+                <livewire:bestelde-pizza :bestelling="$Product" :ProductID="key($Product)" />
             @endforeach
         @endif
     </div>
