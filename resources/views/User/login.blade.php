@@ -4,8 +4,8 @@
 
         @php
             $formFields = [
-                ['type' => 'email', 'name' => 'email', 'label' => 'Email', 'required' => true, 'value' => old('email'), 'error' => $errors->get('email'), 'placeholder' => 'vul hier uw email in'],
-                ['type' => 'password', 'name' => 'password', 'label' => 'Password', 'required' => true, 'value' => old('password'), 'error' => $errors->get('password'), 'placeholder' => 'vul hier uw wachtwoord in'],
+                ['type' => 'email', 'name' => 'Email', 'label' => 'Email', 'required' => true, 'value' => old('Email'), 'error' => $errors->get('Email'), 'placeholder' => 'vul hier uw email in'],
+                ['type' => 'password', 'name' => 'HASH', 'label' => 'Password', 'required' => true, 'value' => old('HASH'), 'error' => $errors->get('HASH'), 'placeholder' => 'vul hier uw wachtwoord in'],
             ];       
         @endphp
         <div class="w-grow flex justify-center items-center">

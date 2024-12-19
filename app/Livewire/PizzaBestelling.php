@@ -12,7 +12,7 @@ class PizzaBestelling extends Component
 {
     public $pizza;
     public $Pizza_Grooten;
-    public $Pizza_Groote = 1;
+    public $Pizza_Groote = 0;
 
     public function mount(Pizza $pizza)
     {
@@ -23,7 +23,7 @@ class PizzaBestelling extends Component
     public function addToOrder() {
         $Pizza_bestelling = new Pizza_bestelling();
         $Pizza_bestelling->Pizza = $this->pizza;
-        $Pizza_bestelling->Grootte = $this->Pizza_Grooten[$this->Pizza_Groote];
+        $Pizza_bestelling->Grootte = $this->Pizza_Grooten[$this->Pizza_Groote - 1];
         $order = Session::get("order");
         $order[] = $Pizza_bestelling;
         Session::put("order", $order);

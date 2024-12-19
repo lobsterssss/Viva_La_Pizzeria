@@ -4,9 +4,9 @@
 
         @php
             $formFields = [
-                ['type' => 'text', 'name' => 'name', 'label' => 'Naam', 'required' => true, 'value' => old('name'), 'error' => $errors->get('name'), 'placeholder' => 'vul hier uw naam in'],
-                ['type' => 'email', 'name' => 'email', 'label' => 'Email', 'required' => true, 'value' => old('email'), 'error' => $errors->get('email'), 'placeholder' => 'vul hier uw email in'],
-                ['type' => 'password', 'name' => 'password', 'label' => 'Password', 'required' => true, 'value' => old('password'), 'error' => $errors->get('password'), 'placeholder' => 'vul hier uw wachtwoord in'],
+                ['type' => 'text', 'name' => 'GB', 'label' => 'Naam', 'required' => true, 'value' => old('name'), 'error' => $errors->get('GB'), 'placeholder' => 'vul hier uw naam in'],
+                ['type' => 'email', 'name' => 'Email', 'label' => 'Email', 'required' => true, 'value' => old('email'), 'error' => $errors->get('Email'), 'placeholder' => 'vul hier uw email in'],
+                ['type' => 'password', 'name' => 'HASH', 'label' => 'Password', 'required' => true, 'value' => old('password'), 'error' => $errors->get('HASH'), 'placeholder' => 'vul hier uw wachtwoord in'],
                 ['type' => 'password', 'name' => 're-password', 'label' => 're-Password', 'required' => true, 'value' => old('re-password'), 'error' => '', 'placeholder' => 'vul hier nog een keer uw wachtwoord in'],
             ];
         @endphp

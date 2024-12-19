@@ -30,8 +30,8 @@ class UserController extends Controller
     public function login(Request $request) 
     {
         $data = $request->all();
-        $User = User::where("email", $data['email'])->first();
-        if(isset($User) && Hash::check($data['password'], $User['password'])):
+        $User = User::where("Email", $data['Email'])->first();
+        if(isset($User) && Hash::check($data['HASH'], $User['HASH'])):
             Auth::login($User);
             return response()->json(200);
         endif;
@@ -62,8 +62,8 @@ class UserController extends Controller
     public function register(Request $request) 
     {
         $data = $request->all();
-        $EmailIsTaken = User::where("email", $data['email'])->first();
-        if(!isset($EmailIsTaken) && $data['password'] == $data['re-password']):
+        $EmailIsTaken = User::where("Email", $data['Email'])->first();
+        if(!isset($EmailIsTaken) && $data['HASH'] == $data['re-password']):
             $User = new User();
             $message = $User->create_user($data);
         else:

@@ -25,9 +25,9 @@ class User extends Authenticatable
      * @var array<int, string>
      */
     protected $fillable = [
-        'name',
-        'email',
-        'password',
+        'GB',
+        'Email',
+        'HASH',
         'roll'
     ];
 
@@ -37,7 +37,7 @@ class User extends Authenticatable
      * @var array<int, string>
      */
     protected $hidden = [
-        'password',
+        'HASH',
         'remember_token',
     ];
 
@@ -51,7 +51,7 @@ class User extends Authenticatable
         return [
             'role' => Roles::class,
             'email_verified_at' => 'datetime',
-            'password' => 'hashed',
+            'HASH' => 'hashed',
         ];
     }
     
@@ -59,8 +59,8 @@ class User extends Authenticatable
     {
         $errors = $this->validate($data);
         if(!$errors):
-            $data['password'] = Hash::make($data['password']);
-            $data['password'];
+            $data['HASH'] = Hash::make($data['HASH']);
+            $data['HASH'];
             $this->create($data);
             return "account succesfull aangemaakt";
         endif;
@@ -70,9 +70,9 @@ class User extends Authenticatable
     public function validate($data)
     {
         $rules = [
-            'name' => 'required|string|max:255|min:1',
-            'email' => 'required|email|max:255|min:4',
-            'password' => 'required|string|max:255|min:4',
+            'GB' => 'required|string|max:255|min:1',
+            'Email' => 'required|email|max:255|min:4',
+            'HASH' => 'required|string|max:255|min:4',
         ];
 
         $validator = Validator::make($data, $rules);
