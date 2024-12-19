@@ -7,12 +7,12 @@
         <div class="flex justify-between items-center mt-4">
 
                 <label for="Pizza_Groote">Groote:</label>
-                <select wire:onchange="changeSize" wire:model='Pizza_Groote' id="Pizza_Groote" name="Pizza_Groote">
-                    @foreach($pizza->Groottes() as $groote)
+                <select wire:model='Pizza_Groote' id="Pizza_Groote" name="Pizza_Groote">
+                    @foreach($Pizza_Grooten as $groote)
                     <option value="{{$groote->GrootteID}}">{{$groote->Pizzagrootte}} +{{$groote->Prijs}}€</option>
                     @endforeach
                 </select>
-                <div> <button wire:click="addToOrder" class="btn btn-primary bg-Italy_green p-2 rounded-lg text-white">Bestellen</button></div>
+                <button wire:click="addToOrder" class="btn btn-primary bg-Italy_green p-2 rounded-lg text-white">Bestellen</button>
         </div>
     </div>
 </pizza-wiget>

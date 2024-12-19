@@ -13,5 +13,8 @@ class Product_bestelling extends Model
     protected $hidden = [
         'BestelID',
     ];
-    
+
+    protected $attributes = [
+        'Aantal' => 1,
+    ];
 }

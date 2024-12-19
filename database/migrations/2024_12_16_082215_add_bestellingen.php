@@ -2,6 +2,11 @@
 
 use App\Models\User;
 use App\Enums\Status;
+use App\Models\Bestelling;
+use App\Models\Drank;
+use App\Models\Grootte;
+use App\Models\Korting;
+use App\Models\Pizza;
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
@@ -15,25 +20,25 @@ return new class extends Migration
     {
         Schema::create('Bestellings', function (Blueprint $table) {
             $table->id('BestelID');
-            $table->foreignId('GebruikerID')->nullable();
-            $table->foreignId('KortingID')->nullable();
+            $table->foreignIdFor(User::class, 'GebruikerID')->nullable();
+            $table->foreignIdFor(Korting::class ,'KortingID')->nullable();
             $table->date('Datum');
             $table->string('Status')->default(Status::Nbeggonen);
         });
 
         Schema::create('Bestelling_pizzas', function (Blueprint $table) {
             $table->id('ID');
-            $table->foreignId('PizzaID');
-            $table->foreignId('BestelID');
-            $table->foreignId('GrootteID')->default(1);
+            $table->foreignIdFor(Pizza::class, 'PizzaID');
+            $table->foreignIdFor(Bestelling::class, 'BestelID');
+            $table->foreignIdFor(Grootte::class, 'GrootteID')->default(1);
             $table->integer('Aantal');
             $table->double('Prijs');
         });
 
         Schema::create('Bestelling_dranks', function (Blueprint $table) {
             $table->id('ID');
-            $table->foreignId('DrankID');
-            $table->foreignId('BestelID');
+            $table->foreignIdFor(Drank::class, 'DrankID');
+            $table->foreignIdFor(Bestelling::class, 'BestelID');
             $table->integer('Aantal');
             $table->double('Prijs');
         });
@@ -57,6 +62,10 @@ return new class extends Migration
      */
     public function down(): void
     {
-        //
+        Schema::dropIfExists('Bestellings');
+        Schema::dropIfExists('Bestelling_pizzas');
+        Schema::dropIfExists('Bestelling_dranks');
+        Schema::dropIfExists('Groottes');
+        Schema::dropIfExists('Korting');
     }
 };

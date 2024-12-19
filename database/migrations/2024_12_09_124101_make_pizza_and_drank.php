@@ -1,5 +1,7 @@
 <?php
 
+use App\Models\Ingredienten;
+use App\Models\Pizza;
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
@@ -27,8 +29,8 @@ return new class extends Migration
         });
         Schema::create('Pizza_ingredients', function (Blueprint $table) {
             $table->id('ID');
-            $table->foreignId('IngredientID');
-            $table->foreignId('PizzaID');
+            $table->foreignIdFor(Ingredienten::class ,'IngredientID');
+            $table->foreignIdFor(Pizza::class, 'PizzaID');
         });
 
         Schema::create('Ingredients', function (Blueprint $table) {
