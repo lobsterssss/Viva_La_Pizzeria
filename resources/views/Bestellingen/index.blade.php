@@ -16,7 +16,7 @@
 
         </div>
 
-        {{-- <livewire:bestellingen/> --}}
+        <livewire:bestellingen/>
 
     @endsection
 

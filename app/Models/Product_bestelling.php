@@ -6,6 +6,8 @@ use Illuminate\Database\Eloquent\Model;
 
 class Product_bestelling extends Model
 {
+    public $timestamps = false;
+
     protected $fillable = [
         'Aantal',
         'prijs',

@@ -9,17 +9,14 @@ $formFields = [
     <div>
         <h1 class="text-xl font-bold">uw bestelling</h1>
         @if($Products)
-            @foreach($Products as $Product)
-                <livewire:bestelde-pizza :bestelling="$Product" :ProductID="key($Product)" />
+            @foreach($Products as $index => $Product)
+                <livewire:bestelde-pizza :bestelling="$Product" :key="'product-'.$index" />
             @endforeach
         @endif
-    </div>
-    <form action="" method="post">
-        @csrf
-        
+    </div>        
         @foreach ($formFields as $field)
         <x-form_input :error="$field['error']" :type="$field['type']" :name="$field['name']" :value="$field['value']" :label="$field['label']" :placeholder="$field['placeholder']" :required="$field['required']" />
         @endforeach
-        <button class="btn btn-primary bg-Italy_green p-2 rounded-lg text-white">Bestellen</button>
-    </form>
+        <button wire:click="Order" class="btn btn-primary bg-Italy_green p-2 rounded-lg text-white">Bestellen</button>
 </div>
+

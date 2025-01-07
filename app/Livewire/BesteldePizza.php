@@ -2,6 +2,7 @@
 
 namespace App\Livewire;
 
+use Illuminate\Support\Facades\Session;
 use App\Models\Grootte;
 use App\Models\Pizza;
 use App\Models\Pizza_bestelling;
@@ -21,11 +22,21 @@ class BesteldePizza extends Component
         $this->amount = $bestelling->Aantal;
     }
     public function removeIncrement() {
-        $this->amount--;
-        if($this->amount >= 0)
+        if(!$this->amount >= 1)
         {
-            
-            $this->bestelling;
+            $this->bestelling = null;
+            // return "";
+            $products = Session::get('order');
+            unset($products[$this->bestelling]);
+            Session::set('order', $products[$this->bestelling]);
+
+        }
+        else
+        {
+            $products = Session::get('order');
+            $products[$this->bestelling]->amount = $this->amount--;
+            Session::set('order', $products[$this->bestelling]);
+
         }
     }
 
