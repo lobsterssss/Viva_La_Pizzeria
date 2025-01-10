@@ -25,7 +25,7 @@ return new class extends Migration
             $table->string('Naam');
             $table->string('Omschrijving');
             $table->double('Prijs');
-            $table->string('FotoUri')->default('Generic_pizza');        
+            $table->string('FotoUri')->default('Generic_drank');        
         });
         Schema::create('Pizza_ingredients', function (Blueprint $table) {
             $table->id('ID');

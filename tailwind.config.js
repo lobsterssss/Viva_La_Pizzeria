@@ -19,6 +19,10 @@ export default {
                 'Italy_dark_red': '#B11E25',
                 'Italy_green': '#008C45',
                 'Italy_dark_green': '#008C45',
+                'Color_Nog_niet_beggonen': '#d4210d',
+                'Color_Beggonen': '#d4ca0d',
+                'Color_Klaar': '#008C45',
+
               },
               boxShadow: {
                 'default': '1px 4px 8px 4px rgba(0, 0, 0, 0.25)',

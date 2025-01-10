@@ -23,7 +23,7 @@ return new class extends Migration
             $table->foreignIdFor(User::class, 'GebruikerID')->nullable();
             $table->foreignIdFor(Korting::class ,'KortingID')->nullable();
             $table->date('Datum');
-            $table->string('Status')->default(Status::Nbeggonen);
+            $table->enum('Status', ['Nog niet beggonen', 'Beggonen', 'Klaar'])->default(Status::Nog_niet_beggonen);
         });
 
         Schema::create('Bestelling_pizzas', function (Blueprint $table) {

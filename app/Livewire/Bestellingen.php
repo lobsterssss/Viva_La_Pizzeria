@@ -7,62 +7,82 @@ use Livewire\Component;
 use App\Models\Bestelling;
 use App\Models\Drank_bestelling;
 use App\Models\Pizza_bestelling;
+use Illuminate\Support\Facades\Auth;
 use Livewire\Attributes\On;
 
 
 class Bestellingen extends Component
 {
     public $Products;
+    public $prijs;
 
     public function mount()
     {
       // Session::flush('order');
       $Products = Session::get('order');
       $this->Products = $Products;
+      if($this->Products)
+      $this->prijs = $this->calc_price($this->Products);
     }
 
     #[On('post-created')]
-    public function Remove()
-    {
-      $Products = Session::get('order');
-      $this->Products = $Products;
-
-    }
-    
     public function Pollcart()
     {
-      unset($this->Products);
       $this->Products = Session::get('order');
-      $this->render();
+      if($this->Products)
+      $this->prijs = $this->calc_price($this->Products);
+
     }
 
     public function Order() {
-      $order = new Bestelling();
-      $order->Datum = date('Y-m-d');
-      $order->save();
       $Products = Session::get('order');
+      if(Session::exists('order')){
+        $order = new Bestelling();
+        $order->Datum = date('Y-m-d');
+        Auth::check() ? $order->GebruikerID = Auth::user()->id : null;
+        $order->save();
+        $Products = Session::get('order');
+
+        foreach($Products as $Product):
+          if($Product->Pizza)
+          {
+            $Order = new Pizza_bestelling();
+            $Order->PizzaID = $Product->Pizza->PizzaID;
+            $Order->BestelID = $order->BestelID;
+            $Order->GrootteID = $Product->Grootte->GrootteID;
+            $Order->Aantal = $Product->Aantal;
+            $Order->Prijs = ($Product->Pizza->Prijs + $Product->Grootte->Prijs) * $Product->Aantal;
+            $Order->save();
+          }
+          elseif ($Product->Drank) {
+            $Order = new Drank_bestelling();
+            $Order->DrankID = $Product->Drank->DrankID;
+            $Order->BestelID = $order->BestelID;
+            $Order->Aantal = $Product->Aantal;
+            $Order->Prijs = $Product->Drank->Prijs * $Product->Aantal;
+            $Order->save();
+          }
+        endforeach;
+        Session::flush('order');
+        if(!$order->GebruikerID):
+          Session::flush('bestelling');
+          Session::put('bestelling', $order);
+          return redirect("/bestelling");
+        endif;
+      }
+    }
+
+    private function calc_price($Products)
+    {
+      $prijs = 0;
       foreach($Products as $Product):
-        if($Product->Pizza)
-        {
-          $Order = new Pizza_bestelling();
-          $Order->PizzaID = $Product->Pizza->PizzaID;
-          $Order->BestelID = $order->BestelID;
-          $Order->GrootteID = $Product->Grootte->GrootteID;
-          $Order->Aantal = $Product->Aantal;
-          $Order->Prijs = ($Product->Pizza->Prijs + $Product->Grootte->Prijs) * $Product->Aantal;
-          $Order->save();
-        }
-        elseif ($Product->Drink) {
-          $Order = new Drank_bestelling();
-          $Order->PizzaID = $Product->Drank->DrankID;
-          $Order->BestelID = $order->BestelID;
-          $Order->Aantal = $Product->Aantal;
-          $Order->Prijs = $Product->Drank->Prijs * $Product->Aantal;
-          $Order->save();
-        }
+        if($Product->Pizza):
+        $prijs += ($Product->Pizza->Prijs + $Product->Grootte->Prijs) * $Product->Aantal;
+        else:
+          $prijs += $Product->Drank->Prijs * $Product->Aantal;
+        endif;
       endforeach;
-      Session::flush('order');
-      return redirect();
+      return $prijs;
     }
 
     public function render()

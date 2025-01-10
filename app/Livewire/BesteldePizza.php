@@ -13,40 +13,53 @@ class BesteldePizza extends Component
     public $bestelling;
     public $product;
     public $product_groote;
-    public $amount = 1;
+    public $amount;
+    public $index;
 
-    public function mount(Pizza_bestelling $bestelling) {
+
+    public function mount($bestelling, $index) {
         $this->bestelling = $bestelling;
+        if($bestelling->Pizza):
         $this->product = $bestelling->Pizza;
         $this->product_groote = $bestelling->Grootte;
+        else:
+            $this->product = $bestelling->Drank;
+        endif;
         $this->amount = $bestelling->Aantal;
+        $this->index = $index;
     }
+
     public function removeIncrement() {
-        if(!$this->amount >= 1)
+        if($this->amount <= 1)
         {
-            $this->bestelling = null;
-            // return "";
             $products = Session::get('order');
-            unset($products[$this->bestelling]);
-            Session::set('order', $products[$this->bestelling]);
+            unset($products[$this->index]);
+            Session::put('order', $products);
+            $this->dispatch('post-created');
 
         }
         else
         {
+            $this->amount--;
             $products = Session::get('order');
-            $products[$this->bestelling]->amount = $this->amount--;
-            Session::set('order', $products[$this->bestelling]);
+            $products[$this->index]->Aantal--;
+            Session::put('order', $products);
+            $this->dispatch('post-created');
 
         }
     }
 
     public function addIncrement() {
         $this->amount++;
+        $products = Session::get('order');
+        $products[$this->index]->Aantal++;
+        Session::put('order', $products);
+        $this->dispatch('post-created');
+
     }
 
     public function render()
     {
-        // dd($this);
         return view('livewire.bestelde-pizza' );
     }
 }

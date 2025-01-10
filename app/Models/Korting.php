@@ -6,5 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class Korting extends Model
 {
+    protected $table = 'Kortings';
+
     //
 }

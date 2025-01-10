@@ -10,7 +10,7 @@
             <h1 class="text-xl font-bold ">Drankjes</h1>
             <article class="grid grid-cols-3 gap-4 w-grow p-4 mb-10">
                 @foreach ($products['drinks'] as $Drank)
-                    <x-drank_wiget :drank="$Drank" />
+                    <livewire:drank-bestelling :drank="$Drank"/>
                 @endforeach
             </article>
 

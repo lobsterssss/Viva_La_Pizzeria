@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 class Pizza_bestelling extends Product_bestelling
 {
 
-    protected $table = 'bestelling_pizzas';
+    protected $table = 'Bestelling_pizzas';
     protected $fillable = [
         'GroottelID',
     ];
@@ -17,7 +17,7 @@ class Pizza_bestelling extends Product_bestelling
     ];
 
     public function Pizza(){
-        return $this->hasOne(Pizza::class, null ,'PizzalID');
+        return $this->hasOne(Pizza::class, 'PizzaID' ,'PizzaID');
     }
 
     public function Get_size($id) 
@@ -26,7 +26,7 @@ class Pizza_bestelling extends Product_bestelling
     }
 
     public function Grootte(){
-        return $this->belongsTo(Grootte::class, 'GrootteID', 'ID');
+        return $this->belongsTo(Grootte::class, 'GrootteID');
     }
 
     public function Bestelling(){

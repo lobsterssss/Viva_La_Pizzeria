@@ -10,7 +10,6 @@ use function Pest\Laravel\get;
 class ProductController extends Controller
 {
 
-
     public function index() 
     {
         $products = Product::all_products();
@@ -23,10 +22,5 @@ class ProductController extends Controller
 
     }
 
-    public function all_products()
-    {
-        $products = Product::all_products();
 
-        return response()->json($products);
-    }
 }

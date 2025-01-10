@@ -16,8 +16,8 @@ class Product extends Model
 
     static public function all_products()
     {
-        foreach(Pizza::all() as $pizza) {
-            $products['pizzas'][] = $pizza;
+        foreach(Pizza::all() as $Pizza) {
+            $products['pizzas'][] = $Pizza;
         } 
         foreach(Drank::all() as $drank) {
             $products['drinks'][] = $drank;

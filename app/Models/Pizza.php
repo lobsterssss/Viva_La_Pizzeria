@@ -6,6 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class Pizza extends Product
 {
+   protected $table = 'Pizzas';
    protected $primaryKey = 'PizzaID';
 
    static public function get_pizza($id)

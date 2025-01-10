@@ -10,13 +10,16 @@ $formFields = [
         <h1 class="text-xl font-bold">uw bestelling</h1>
         @if($Products)
             @foreach($Products as $index => $Product)
-                <livewire:bestelde-pizza :bestelling="$Product" :key="'product-'.$index" />
+                <livewire:bestelde-pizza :bestelling="$Product" :index="$index" :key="'product-'.$index" />
             @endforeach
         @endif
     </div>        
         @foreach ($formFields as $field)
         <x-form_input :error="$field['error']" :type="$field['type']" :name="$field['name']" :value="$field['value']" :label="$field['label']" :placeholder="$field['placeholder']" :required="$field['required']" />
         @endforeach
-        <button wire:click="Order" class="btn btn-primary bg-Italy_green p-2 rounded-lg text-white">Bestellen</button>
+        <div class="w-grow flex flex-col items-end justify-around">
+            <p>Prijs: {{$prijs}}€</p>
+            <button wire:click="Order" class="btn btn-primary bg-Italy_green p-2 rounded-lg text-white">Bestellen</button>
+        </div>
 </div>
 

@@ -6,6 +6,8 @@ use Illuminate\Database\Eloquent\Model;
 
 class Grootte extends Model
 {
+   protected $table = 'Groottes';
+
     protected $primaryKey = 'GrootteID';
 
     protected $fillable = [

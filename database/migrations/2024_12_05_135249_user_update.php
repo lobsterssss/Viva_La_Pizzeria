@@ -14,7 +14,7 @@ return new class extends Migration
     {
         Schema::table('users', function (Blueprint $table) {
             $table->boolean('MFA')->default(false);
-            $table->string('Role')->default(Roles::Klant->value);
+            $table->enum('Role', ['admin', 'keuken', 'kassa', 'klant'])->default(Roles::Klant->value);
         });
     }
 
