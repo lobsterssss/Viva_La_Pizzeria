@@ -43,7 +43,7 @@ class ApiController extends Controller
             $User = new User();
             $message = $User->create_user($data);
         else:
-            $message = ["error" => "email already in use"];
+            $message = ["Email" => "email already in use"];
         endif;
         return response()->json($message, 200);
     }
