@@ -11,13 +11,13 @@ Route::get('/', function () {
 });
 
 Route::get( '/login', function () {
-    return view('user.login');
+    return view('User.login');
 })->name('login');
 
 Route::post( '/login', [UserController::class, 'post_Login'])->name('login_post');
 
 Route::get('/register', function () {
-    return view('user.register');
+    return view('User.register');
 })->name('register');
 
 Route::post('/register', [UserController::class, 'post_Register'])->name('register_post');

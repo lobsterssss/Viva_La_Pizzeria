@@ -33,6 +33,7 @@ return new class extends Migration
             $table->foreignIdFor(Grootte::class, 'GrootteID')->default(1);
             $table->integer('Aantal');
             $table->double('Prijs');
+            $table->text('Beschrijving')->nullable();
         });
 
         Schema::create('Bestelling_dranks', function (Blueprint $table) {
