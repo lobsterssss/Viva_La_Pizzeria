@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\ApiController;
+use Illuminate\Support\MessageBag;
+use Illuminate\Support\ViewErrorBag;
 
 class UserController extends Controller
 {
@@ -16,7 +18,8 @@ class UserController extends Controller
         if($message == 200):
             return redirect("/");
         endif;
-        return back()->withInput()->withErrors($message);
+
+        return back()->withInput()->withErrors(['error' => 'Fout email of wachtwoord'], 'custom_error_bag');
     }
 
     public function Edit() 

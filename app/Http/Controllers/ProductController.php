@@ -14,13 +14,12 @@ class ProductController extends Controller
     {
         $products = Product::all_products();
         
-        return view("Product.Menu")->with('products', $products);
+        return view("product.Menu")->with('products', $products);
     }
 
     public function show() 
     {
 
     }
-
 
 }

@@ -9,12 +9,14 @@
             ];       
         @endphp
         <div class="w-grow flex justify-center items-center">
-            <form class="p-4 rounded-lg shadow-default" action="{{ route('login') }}" method="POST">
+            <form class="p-4 rounded-lg shadow-default" action="{{ route('login_post') }}" method="POST">
                 @csrf
                 <h2 class="text-lg font-bold">Login</h2>
-                @if(old('Email'))<p class="bg-red-500 rounded-lg text-white p-1">{{$errors[0][0]}}</p>@endif
+                @error('error', 'custom_error_bag')
+                    <p class="bg-red-500 rounded-lg text-white p-1">{{$message}}</p>
+                @enderror
                 @foreach ($formFields as $field)
-                <x-form_input :type="$field['type']" :name="$field['name']" :value="$field['value']" :label="$field['label']" :placeholder="$field['placeholder']" :required="$field['required']" />
+                <x-form_input  :error=null :type="$field['type']" :name="$field['name']" :value="$field['value']" :label="$field['label']" :placeholder="$field['placeholder']" :required="$field['required']" />
                 @endforeach
 
                 <div class="flex justify-between items-center gap-8">

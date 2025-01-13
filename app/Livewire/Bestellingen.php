@@ -18,7 +18,6 @@ class Bestellingen extends Component
 
     public function mount()
     {
-      // Session::flush('order');
       $Products = Session::get('order');
       $this->Products = $Products;
       if($this->Products)
@@ -63,12 +62,14 @@ class Bestellingen extends Component
             $Order->save();
           }
         endforeach;
-        Session::flush('order');
+        Session::forget('order');
         if(!$order->GebruikerID):
-          Session::flush('bestelling');
-          Session::put('bestelling', $order);
+          Session::forget('bestelling');
+          Session::put('bestelling', $order->BestelID);
           return redirect("/bestelling");
         endif;
+        return redirect("/bestelling/" . $order->BestelID);
+
       }
     }
 

@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use App\Enums\Roles;
 use App\Enums\Status;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Facades\Auth;
@@ -13,10 +14,28 @@ class Bestelling extends Model
     protected $table = 'Bestellings';
     protected $primaryKey = 'BestelID';
 
+    protected $attributes = [
+        'Status' => Status::Nog_niet_beggonen,
+    ];
+
     static public function all_user_orders(){
         if(Auth::check()):
-        return Bestelling::all()->where(auth::user()->id);
+            if(Auth::user()->Role == Roles::Kassa->value || Auth::user()->Role == Roles::Keuken->value):
+                return Bestelling::orderBy("Status", "ASC")->get();
+            else:
+                return Bestelling::where("GebruikerID", Auth::user()->id)->get();
+            endif;
         endif;
+    }
+
+    static public function get_order_by_id($id)
+    {
+        return Bestelling::find($id);
+    }
+    
+    static public function get_user_order_by_id($id)
+    {
+        return Bestelling::where("GebruikerID", Auth::user()->id)->find($id);
     }
 
     static public function get_order_not_started()
@@ -26,6 +45,7 @@ class Bestelling extends Model
         $order->save();
         return $order;
     }
+
     static public function set_status_done($id)
     {
         $order = Bestelling::find($id)->first()->Status;

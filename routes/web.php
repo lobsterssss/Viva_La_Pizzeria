@@ -14,24 +14,24 @@ Route::get( '/login', function () {
     return view('user.login');
 })->name('login');
 
-Route::post( '/login', [UserController::class, 'post_Login'])->name('login');
+Route::post( '/login', [UserController::class, 'post_Login'])->name('login_post');
 
 Route::get('/register', function () {
     return view('user.register');
 })->name('register');
 
-Route::post('/register', [UserController::class, 'post_Register'])->name('register');
+Route::post('/register', [UserController::class, 'post_Register'])->name('register_post');
 
-Route::get('/logout', [UserController::class, 'logout'])->name('logout');
+Route::get('/logout', [UserController::class, 'logout']);
 
 Route::get('/menu', [ProductController::class, 'index'])->name('menu');
 
 Route::get('/bestellen', [BestellingController::class, 'index']);
 
 Route::get('/bestelling', [BestellingController::class, 'show_order']);
-Route::get('/bestelling/$id', [BestellingController::class, '']);
+Route::get('/bestelling/{id}', [BestellingController::class, 'show_user_order'])->name("selected_order");
 
-Route::get('/bestelling_geschiedeniss', [BestellingController::class, '']);
+Route::get('/bestelling_geschiedenis', [BestellingController::class, 'order_history'])->name("order_history");
 
 
 Route::post('/api/register', [ApiController::class, 'register']);

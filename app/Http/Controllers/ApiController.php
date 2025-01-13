@@ -4,7 +4,6 @@ namespace App\Http\Controllers;
 
 use App\Models\Product;
 use App\Models\Bestelling;
-use App\Models\Pizza;
 use App\Models\User;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Auth;
@@ -57,6 +56,7 @@ class ApiController extends Controller
             Auth::login($User);
             return response()->json(200);
         endif;
-        return response()->json("Wrong email or password");
+        
+        return response()->json("");
     }
 }
