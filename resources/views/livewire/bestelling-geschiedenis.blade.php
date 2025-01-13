@@ -1,4 +1,4 @@
-<article class="w-grow" wire:poll.5s="getOrders">
+<article class="flex flex-col w-grow gap-6" wire:poll.5s="getOrders">
     @if(count($orders))
 @foreach ($orders as $order)
     <a href="{{route("selected_order", $order->BestelID)}}" class="flex justify-between w-grow rounded-lg shadow-default p-4">
