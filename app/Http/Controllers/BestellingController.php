@@ -23,7 +23,7 @@ class BestellingController extends Controller
         if(Session::exists('bestelling'))
         {
             $order = Session::get('bestelling');
-            $order = Bestelling::get_order_by_id($order->BestelID);
+            $order = Bestelling::get_order_by_id($order);
             return view("Bestellingen.bestelling")->with('order', $order);
         }
         else

@@ -16,7 +16,7 @@ return new class extends Migration
             $table->string('GB');
             $table->string('Email')->unique();
             $table->timestamp('email_verified_at')->nullable();
-            $table->string('password');
+            $table->string('HASH');
             $table->rememberToken();
             $table->timestamps();
         });

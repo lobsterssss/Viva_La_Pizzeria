@@ -1,7 +1,10 @@
 <footer class="bg-Italy_red flex justify-around px-4 text-white">
         <div class="flex flex-col justify-center">
             <h3>About Viva La Pizzeria</h3>
-            <p>Lorem, ipsum dolor sit amet consectetur<br> adipisicing elit. Optio perspiciatis asperiores <br> ab eius incidunt doloribus doloremque mollitia unde.</p>
+            <p>Welkom bij Viva la Pizzeria, waar passie voor<br>
+             authentieke Italiaanse pizza samenkomt met een warme en gezellige sfeer!<br>
+            Bij ons draait alles om de kunst van pizza maken:<br>
+            van de heerlijk knapperige houtovenbodem tot de verse, zorgvuldig geselecteerde ingrediënten.</p>
         </div>
         <div class="flex flex-col justify-center pt-2 pb-6">
             <h3 class="text-center">Contact gegevens</h3>
@@ -15,11 +18,11 @@
                     <li>nederland</li>
                 </ul>
                 <ul>
-                <a href="mailto:contact@mediturn.com"><li>email: contact@mediturn.com</li></a>
+                <a href="mailto:contact@vivalapizzeria.com"><li>email: contact@vivalapizzeria.com</li></a>
                     <a href="tel:+31615263748"><li>tel: +31 6 1526 3748</li></a>
                     <li><br></li>
                     <li>voor support</li>
-                    <a href="mailto:support@mediturn.com"><li>email: support@mediturn.com</li></a>
+                    <a href="mailto:support@vivalapizzeria.com"><li>email: support@vivalapizzeria.com</li></a>
                     <a href="tel:+31615263748"><li>tel: +31 6 1526 3748</li></a>
                 </ul>
             </div>
