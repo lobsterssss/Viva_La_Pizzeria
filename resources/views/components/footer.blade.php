@@ -10,8 +10,8 @@
             <h3 class="text-center">Contact gegevens</h3>
             <div class="flex gap-4 pt-4">
                 <ul>
-                    <li>postadress:</li>
-                    <li>Mediturn</li>
+                    <li>postadres:</li>
+                    <li>Viva la pizzeria</li>
                     <li>123 maaselingen</li>
                     <li>5674 TM</li>
                     <li>eindhoven, noord-braband</li>
